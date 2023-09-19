@@ -3,7 +3,8 @@ export type themeType =
   | "Vintage"
   | "Minimalist"
   | "Professional"
-  | "Tropical";
+  | "Tropical"
+  | string
 
 export type roomType =
   | "Living Room"

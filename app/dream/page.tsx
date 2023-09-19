@@ -6,6 +6,7 @@ import { useState } from "react";
 import { UploadDropzone } from "react-uploader";
 import { Uploader } from "uploader";
 import { CompareSlider } from "../../components/CompareSlider";
+import DropDown from "../../components/DropDown";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import LoadingDots from "../../components/LoadingDots";
@@ -13,8 +14,7 @@ import ResizablePanel from "../../components/ResizablePanel";
 import Toggle from "../../components/Toggle";
 import appendNewToName from "../../utils/appendNewToName";
 import downloadPhoto from "../../utils/downloadPhoto";
-import DropDown from "../../components/DropDown";
-import { roomType, rooms, themeType, themes } from "../../utils/dropdownTypes";
+import { roomType, rooms, themeType } from "../../utils/dropdownTypes";
 
 // Configuration for the uploader
 const uploader = Uploader({
@@ -117,13 +117,17 @@ export default function DreamPage() {
                         Choose your room theme.
                       </p>
                     </div>
-                    <DropDown
+                    {
+                      <input onChange={(e) => setTheme(e.target?.value || "")} className="bg-gray-100 rounded-full px-4 py-2 w-full text-black" placeholder="Enter a theme" value={theme} />
+
+                    }
+                    {/* <DropDown
                       theme={theme}
                       setTheme={(newTheme) =>
                         setTheme(newTheme as typeof theme)
                       }
                       themes={themes}
-                    />
+                    /> */}
                   </div>
                   <div className="space-y-4 w-full max-w-sm">
                     <div className="flex mt-10 items-center space-x-3">
@@ -165,9 +169,8 @@ export default function DreamPage() {
                 </div>
               )}
               <div
-                className={`${
-                  restoredLoaded ? "visible mt-6 -ml-8" : "invisible"
-                }`}
+                className={`${restoredLoaded ? "visible mt-6 -ml-8" : "invisible"
+                  }`}
               >
                 <Toggle
                   className={`${restoredLoaded ? "visible mb-6" : "invisible"}`}
